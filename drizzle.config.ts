@@ -1,11 +1,10 @@
-// @ts-nocheck
-import { defineConfig } from 'drizzle-kit'
+import type { Config } from 'drizzle-kit'
 
-export default defineConfig({
+export default {
   schema: './lib/db/schema.ts',
-  out: './lib/db/migrations',
-  dialect: 'sqlite',
+  out: './drizzle',
+  dialect: 'turso',
   dbCredentials: {
-    url: './data/family-os.db',
+    url: process.env.DATABASE_URL || 'file:./data/family-os.db',
   },
-})
+} satisfies Config
